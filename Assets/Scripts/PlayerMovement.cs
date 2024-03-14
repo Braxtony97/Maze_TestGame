@@ -7,16 +7,29 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private GetMousePosition _getMousePosition;
     [SerializeField] private NavMeshAgent _navMeshAgent;
-    [SerializeField] private int _speedMove = 5;
+    [SerializeField] private Animator _animator;
+
+    private bool _hasReachedDestination = true;
 
     void Update()
     {
         if (Input.GetMouseButton(0))
         {
-            _getMousePosition.GetMousePositionVector();
-            Debug.Log(_getMousePosition.MousePositionVector);
-            //_navMeshAgent.destination = _getMousePosition.MousePositionVector;
+            _getMousePosition.GetMousePositionVector(); 
             _navMeshAgent.SetDestination(_getMousePosition.MousePositionVector);
-        }    
+            _animator.SetTrigger("Sneaking");
+            _hasReachedDestination = false;
+            Debug.Log("Sneaking");
+        }
+        if (_navMeshAgent.remainingDistance < 0.2f && !_navMeshAgent.pathPending)
+        {
+            if (!_hasReachedDestination)
+            {
+                Debug.Log("Call");
+                _animator.SetTrigger("Idle");
+                _hasReachedDestination = true;
+            }
+        }
     }
+
 }
