@@ -9,7 +9,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private NavMeshAgent _navMeshAgent;
     [SerializeField] private Animator _animator;
 
+    [SerializeField] private string _projectileTag;
+    [SerializeField] private Transform _shootPoint;
+
     private bool _hasReachedDestination = true;
+    private ObjectPooler _pooler;
+
+    private void Start()
+    {
+        _pooler = ObjectPooler.Instance;
+    }
 
     void Update()
     {
@@ -29,6 +38,11 @@ public class PlayerMovement : MonoBehaviour
                 _animator.SetTrigger("Idle");
                 _hasReachedDestination = true;
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            _pooler.SpawnFromPool(_projectileTag, _shootPoint);
         }
     }
 
