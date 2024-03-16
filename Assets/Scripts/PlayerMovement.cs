@@ -42,7 +42,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.K))
         {
+            _animator.SetTrigger("Shoot");
             _pooler.SpawnFromPool(_projectileTag, _shootPoint);
+            _animator.SetTrigger("Idle");
         }
     }
 
