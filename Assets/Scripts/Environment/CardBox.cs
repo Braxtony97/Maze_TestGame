@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Scripts.Environment
+namespace Assets.Scripts.Environment 
 {
-    public class CardBox
+    public class CardBox : MonoBehaviour
     {
         private void OnTriggerEnter(Collider collider)
         {
