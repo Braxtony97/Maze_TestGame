@@ -8,6 +8,7 @@ namespace Assets.Scripts.Characters
     public class Enemy : Character, IShootable
     {
         [SerializeField] private EnemyPatrolRoute _enemyPatrolRoute;
+        [SerializeField] private Transform _playerTransform;
 
         private ObjectPooler _pooler;
 
@@ -46,7 +47,8 @@ namespace Assets.Scripts.Characters
 
         private void StopChase()
         {
-            Debug.Log("Stop following!");
+            Debug.Log("Stop Chase");
+            _enemyPatrolRoute.EnemyPatrolMove();
         }
 
         public void Shoot()
