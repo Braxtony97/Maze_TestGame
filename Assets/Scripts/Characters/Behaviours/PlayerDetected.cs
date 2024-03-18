@@ -15,7 +15,6 @@ namespace Assets.Scripts.Characters.Behaviours
             if (collider.name == "Player")
             {
                 EventBus.PlayerDetected?.Invoke();
-                //agent.destination = player.position;  //3
                 Debug.Log("Player detected - attack!");
             }
         }
