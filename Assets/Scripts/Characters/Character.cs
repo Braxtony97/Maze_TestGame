@@ -12,6 +12,8 @@ namespace Assets.Scripts.Characters
         [Range(0f, 200f)]
         [SerializeField] protected int _maxHealth;
         [SerializeField] protected int _minHealth;
+        [SerializeField] protected string _projectileTag;
+        [SerializeField] protected Transform _shootPoint;
 
         protected int _currentHealth;
 

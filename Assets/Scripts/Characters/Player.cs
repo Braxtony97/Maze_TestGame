@@ -11,8 +11,6 @@ namespace Assets.Scripts.Characters
 {
     public class Player : Character, IShootable
     {
-        [SerializeField] protected string _projectileTag;
-        [SerializeField] protected Transform _shootPoint;
         [SerializeField] private PlayerMovement _movement;
 
         private ObjectPooler _pooler;
