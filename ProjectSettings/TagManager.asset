@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Floor
+  - ColliderEnemyDetected
   layers:
   - Default
   - TransparentFX

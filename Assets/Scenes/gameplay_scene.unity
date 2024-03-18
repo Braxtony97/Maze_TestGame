@@ -10672,6 +10672,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3484299229003817860, guid: 956678ae5b7fe444cbb024e296f944cd, type: 3}
   m_PrefabInstance: {fileID: 1832584161}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &496184420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 496184421}
+  m_Layer: 0
+  m_Name: ShootPointEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &496184421
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496184420}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.439, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 814029800}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &504269053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15879,9 +15910,9 @@ GameObject:
   - component: {fileID: 689378685}
   - component: {fileID: 689378686}
   - component: {fileID: 689378687}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ColliderA (Large)
-  m_TagString: Untagged
+  m_TagString: ColliderEnemyDetected
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18878,6 +18909,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 689378685}
+  - {fileID: 496184421}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &814029801
@@ -18931,6 +18963,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 0
   _minHealth: 0
+  _projectileTag: Bullet
+  _shootPoint: {fileID: 496184421}
   _enemyPatrolRoute: {fileID: 814029802}
 --- !u!54 &814029804
 Rigidbody:

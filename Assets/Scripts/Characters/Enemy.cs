@@ -9,9 +9,12 @@ namespace Assets.Scripts.Characters
     {
         [SerializeField] private EnemyPatrolRoute _enemyPatrolRoute;
 
+        private ObjectPooler _pooler;
+
         protected override void Start()
         {
             base.Start();
+            _pooler = ObjectPooler.Instance;
         }
 
         private void Update()
@@ -37,6 +40,7 @@ namespace Assets.Scripts.Characters
 
         private void FollowPlayer()
         {
+            _pooler.SpawnFromPool(_projectileTag, _shootPoint);
             Debug.Log("Follow Player!");
         }
 

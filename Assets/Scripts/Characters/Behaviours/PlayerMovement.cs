@@ -33,6 +33,7 @@ namespace Assets.Scripts.Characters.Behaviours
                 if (Physics.Raycast(ray, out raycastHit, 1000, _floorLayerMask))
                 {
                     _navMeshAgent.SetDestination(raycastHit.point);
+                    Debug.Log("Floor");
                     _animator.SetTrigger("Sneaking");
                     _hasReachedDestination = false;
                 }
