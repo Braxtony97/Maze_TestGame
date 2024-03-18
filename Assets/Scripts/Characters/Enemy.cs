@@ -21,11 +21,13 @@ namespace Assets.Scripts.Characters
 
         private void OnEnable()
         {
-            EventBus.PlayerHided += FollowPlayer;
+            EventBus.PlayerHided += StopChase;
+            EventBus.PlayerDetected += FollowPlayer;
         }
-        private void OnEDisable()
+        private void OnDisable()
         {
-            EventBus.PlayerHided -= FollowPlayer;
+            EventBus.PlayerHided -= StopChase;
+            EventBus.PlayerDetected -= FollowPlayer;
         }
 
         protected override void Move()
@@ -36,6 +38,11 @@ namespace Assets.Scripts.Characters
         private void FollowPlayer()
         {
             Debug.Log("Follow Player!");
+        }
+
+        private void StopChase()
+        {
+            Debug.Log("Stop following!");
         }
 
         public void Shoot()
