@@ -10,7 +10,7 @@ namespace Assets.Scripts.Characters
         [SerializeField] private EnemyPatrolRoute _enemyPatrolRoute;
         [SerializeField] private Transform _playerTransform;
         [SerializeField] private float _distanceToPlayer = 3f;
-        [SerializeField] protected float _rotationSpeed = 4f;
+        [SerializeField] protected float _rotationSpeed = 10f;
 
         private ObjectPooler _pooler;
         private Player _player;
@@ -49,16 +49,22 @@ namespace Assets.Scripts.Characters
 
         private void FollowPlayer()
         {
+            _enemyPatrolRoute.StopAgent();
+            
+            if (Vector3.Distance(transform.position, _target.position) > _distanceToPlayer)
+            {
+                _enemyPatrolRoute.FollowPlayer();
+            }
             SetAngle(_target.position);
             if (_timerShoot <= 0)
-            {
-                Debug.Log("Enemy");
-                Shoot();
-                _timerShoot = _reloadTimeShoot;
-            }
+                {
+                    Debug.Log("Enemy");
+                    Shoot();
+                    _timerShoot = _reloadTimeShoot;
+                }
             else
-                _timerShoot -= Time.deltaTime;
-            
+                    _timerShoot -= Time.deltaTime;
+
             Debug.Log("Follow Player!");
         }
 
