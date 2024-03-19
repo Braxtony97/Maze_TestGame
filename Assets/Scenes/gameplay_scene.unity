@@ -16292,7 +16292,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 6
+  m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &689378687
 MonoBehaviour:
@@ -19422,9 +19422,11 @@ MonoBehaviour:
   _maxHealth: 0
   _projectileTag: Bullet
   _shootPoint: {fileID: 496184421}
-  _reloadTimeShoot: 0.5
+  _reloadTimeShoot: 3
   _enemyPatrolRoute: {fileID: 814029802}
   _playerTransform: {fileID: 904791122}
+  _distanceToPlayer: 3
+  _rotationSpeed: 4
 --- !u!54 &814029804
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ namespace Assets.Scripts.Characters.Behaviours
 {
     public class PlayerDetected : MonoBehaviour
     {
-        void OnTriggerEnter(Collider collider)
+        void OnTriggerStay(Collider collider)
         {
             if (collider.name == "Player")
             {
