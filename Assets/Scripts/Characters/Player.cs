@@ -12,8 +12,10 @@ namespace Assets.Scripts.Characters
     public class Player : Character, IShootable
     {
         [SerializeField] private PlayerMovement _movement;
+        [SerializeField] private LayerMask _floorLayerMask;
 
         private ObjectPooler _pooler;
+        private float _timerShoot;
 
         protected override void Start()
         {
@@ -33,11 +35,19 @@ namespace Assets.Scripts.Characters
         {
             RaycastHit raycastHit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out raycastHit))
+            if (Physics.Raycast(ray, out raycastHit, 1000f, _floorLayerMask ))
             {
                 if (raycastHit.collider.gameObject.tag == "Enemy")
                 {
-                    Shoot();
+                    if (_timerShoot <= 0)
+                    {
+                        Debug.Log("Enemy");
+                        Shoot();
+                        _timerShoot = _reloadTimeShoot;
+                    }
+                    else
+                        _timerShoot -= Time.deltaTime;
+                    
                 }
                 if (raycastHit.collider.gameObject.tag == "Floor")
                 {

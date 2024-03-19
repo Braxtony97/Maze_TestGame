@@ -8,7 +8,7 @@ namespace Assets.Scripts.Characters.Behaviours
 
         void Update()
         {
-            transform.Translate(Vector3.forward * _bulletSpeed * Time.deltaTime);
+            transform.Translate(Vector3.up * _bulletSpeed * Time.deltaTime);
         }
     }
 }
