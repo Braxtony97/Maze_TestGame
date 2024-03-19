@@ -39,5 +39,14 @@ namespace Assets.Scripts.Characters.Behaviours
                 }
             }
         }
+
+        public void StopAgent()
+        {
+            if (_navMeshAgent != null && _navMeshAgent.isActiveAndEnabled)
+            {
+                _navMeshAgent.isStopped = true; // Остановка NavMesh Agent
+                _navMeshAgent.ResetPath(); // Сброс пути навигации
+            }
+        }
     }
 }

@@ -9,8 +9,7 @@ namespace Assets.Scripts.Characters
     {
         [SerializeField] private EnemyPatrolRoute _enemyPatrolRoute;
         [SerializeField] private Transform _playerTransform;
-        [SerializeField] private float _distanceToPlayer = 3f;
-        [SerializeField] protected float _rotationSpeed = 10f;
+        [SerializeField] private float _distanceToPlayer = 5f;
 
         private ObjectPooler _pooler;
         private Player _player;
@@ -70,20 +69,12 @@ namespace Assets.Scripts.Characters
 
         private void StopChase()
         {
-            Debug.Log("Stop Chase");
             _enemyPatrolRoute.EnemyPatrolMove();
         }
 
         public void Shoot()
         {
             _pooler.SpawnFromPool(_projectileTag, _shootPoint);
-        }
-
-        protected void SetAngle(Vector3 target)
-        {
-            Vector3 deltaPosition = target - transform.position;
-            Quaternion targetRotation = Quaternion.LookRotation(deltaPosition);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _rotationSpeed);
         }
     }
 }
