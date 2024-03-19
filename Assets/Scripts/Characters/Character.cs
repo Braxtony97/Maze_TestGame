@@ -9,6 +9,8 @@ namespace Assets.Scripts.Characters
 {
     public abstract class Character : MonoBehaviour
     {
+        public event Action<float> HealthChanged;
+
         [Range(0f, 200f)]
         [SerializeField] protected int _maxHealth;
         [SerializeField] protected string _projectileTag;
@@ -30,6 +32,11 @@ namespace Assets.Scripts.Characters
             if(_currentHealth <= 0)
             {
                 Destroy(gameObject);
+            }
+            else
+            {
+                float _currentHealthAsPercantage = (float) _currentHealth / _maxHealth;
+                HealthChanged?.Invoke(_currentHealthAsPercantage);
             }
         }
 

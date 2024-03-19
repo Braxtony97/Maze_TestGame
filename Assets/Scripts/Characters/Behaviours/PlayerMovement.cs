@@ -19,6 +19,7 @@ namespace Assets.Scripts.Characters.Behaviours
                 {
                     Debug.Log("Idle");
                     _animator.SetTrigger("Idle");
+                    _animator.ResetTrigger("Sneaking");
                     _hasReachedDestination = true;
                 }
             }
