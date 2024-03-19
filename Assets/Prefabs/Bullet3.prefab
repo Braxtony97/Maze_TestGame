@@ -126,7 +126,7 @@ MonoBehaviour:
   _bulletSpeed: 20
   _myTag: Player
   _colliderEnemyDetected: ColliderEnemyDetected
-  _damage: 5
+  _damage: 10
 --- !u!54 &4770256006157884475
 Rigidbody:
   m_ObjectHideFlags: 0

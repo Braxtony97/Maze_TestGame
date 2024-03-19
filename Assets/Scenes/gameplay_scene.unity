@@ -18682,7 +18682,7 @@ RectTransform:
   m_GameObject: {fileID: 797280895}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.2, y: 2.2, z: 2.2}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1703602858}
@@ -18706,6 +18706,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 963194227}
+  _healthBarFill: {fileID: 95507828}
+  _character: {fileID: 814029803}
 --- !u!114 &797280898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23976,6 +23978,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 963194227}
+  _healthBarFill: {fileID: 1753985}
+  _character: {fileID: 904791125}
 --- !u!1001 &973431855
 PrefabInstance:
   m_ObjectHideFlags: 0
