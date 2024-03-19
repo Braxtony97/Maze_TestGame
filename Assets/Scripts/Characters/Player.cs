@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AI;
+using static UnityEngine.GraphicsBuffer;
 
 namespace Assets.Scripts.Characters
 {
@@ -46,9 +48,10 @@ namespace Assets.Scripts.Characters
             {
                 if (raycastHit.collider.gameObject.tag == "Enemy")
                 {
+                    _movement.StopAgent();
+                    SetAngle(raycastHit.collider.gameObject.transform.position);
                     if (_timerShoot <= 0)
                     {
-                        Debug.Log("Enemy");
                         Shoot();
                         _timerShoot = _reloadTimeShoot;
                     }
