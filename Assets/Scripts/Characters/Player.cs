@@ -11,11 +11,18 @@ namespace Assets.Scripts.Characters
 {
     public class Player : Character, IShootable
     {
+        public static Player Instance;
+
         [SerializeField] private PlayerMovement _movement;
         [SerializeField] private LayerMask _floorLayerMask;
 
         private ObjectPooler _pooler;
         private float _timerShoot;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         protected override void Start()
         {

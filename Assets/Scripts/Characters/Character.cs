@@ -15,7 +15,6 @@ namespace Assets.Scripts.Characters
         [SerializeField] protected Transform _shootPoint;
         [SerializeField] protected float _reloadTimeShoot = 0.1f;
 
-
         protected int _currentHealth;
 
         protected virtual void Start()

@@ -9,13 +9,21 @@ namespace Assets.Scripts.Characters
     {
         [SerializeField] private EnemyPatrolRoute _enemyPatrolRoute;
         [SerializeField] private Transform _playerTransform;
+        [SerializeField] private float _distanceToPlayer = 3f;
+        [SerializeField] protected float _rotationSpeed = 4f;
 
         private ObjectPooler _pooler;
+        private Player _player;
+        private Transform _target;
+        private float _timerShoot;
 
         protected override void Start()
         {
             base.Start();
             _pooler = ObjectPooler.Instance;
+            _player = Player.Instance;
+            _target = _player.transform;
+
         }
 
         private void Update()
@@ -41,7 +49,16 @@ namespace Assets.Scripts.Characters
 
         private void FollowPlayer()
         {
-            _pooler.SpawnFromPool(_projectileTag, _shootPoint);
+            SetAngle(_target.position);
+            if (_timerShoot <= 0)
+            {
+                Debug.Log("Enemy");
+                Shoot();
+                _timerShoot = _reloadTimeShoot;
+            }
+            else
+                _timerShoot -= Time.deltaTime;
+            
             Debug.Log("Follow Player!");
         }
 
@@ -53,7 +70,14 @@ namespace Assets.Scripts.Characters
 
         public void Shoot()
         {
-            throw new System.NotImplementedException();
+            _pooler.SpawnFromPool(_projectileTag, _shootPoint);
+        }
+
+        protected void SetAngle(Vector3 target)
+        {
+            Vector3 deltaPosition = target - transform.position;
+            Quaternion targetRotation = Quaternion.LookRotation(deltaPosition);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _rotationSpeed);
         }
     }
 }
