@@ -20,6 +20,7 @@ namespace Assets.Scripts.Characters.Behaviours
                     Debug.Log("Idle");
                     _animator.SetTrigger("Idle");
                     _animator.ResetTrigger("Sneaking");
+                    _animator.ResetTrigger("Shoot");
                     _hasReachedDestination = true;
                 }
             }
@@ -34,8 +35,8 @@ namespace Assets.Scripts.Characters.Behaviours
                 if (Physics.Raycast(ray, out raycastHit, 1000, _floorLayerMask))
                 {
                     _navMeshAgent.SetDestination(raycastHit.point);
-                    Debug.Log("Floor");
                     _animator.SetTrigger("Sneaking");
+                    _animator.ResetTrigger("Shoot");
                     _hasReachedDestination = false;
                 }
             }

@@ -1,13 +1,7 @@
 ﻿using Assets.Scripts.Characters.Behaviours;
+using Assets.Scripts.GameMagaer;
 using Assets.Scripts.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.AI;
-using static UnityEngine.GraphicsBuffer;
 
 namespace Assets.Scripts.Characters
 {
@@ -17,6 +11,7 @@ namespace Assets.Scripts.Characters
 
         [SerializeField] private PlayerMovement _movement;
         [SerializeField] private LayerMask _floorLayerMask;
+        [SerializeField] private Animator _animator;
 
         private ObjectPooler _pooler;
         private float _timerShoot;
@@ -68,6 +63,8 @@ namespace Assets.Scripts.Characters
 
         public void Shoot()
         {
+            _audioManager.SFXPlay(_audioManager._audioSFXClipList[0]);
+            _animator.SetTrigger("Shoot");
             _pooler.SpawnFromPool(_projectileTag, _shootPoint);
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.GameMagaer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,7 @@ namespace Assets.Scripts.Characters
         [SerializeField] protected Transform _shootPoint;
         [SerializeField] protected float _reloadTimeShoot = 0.1f;
         [SerializeField] protected float _rotationSpeed = 10f;
+        [SerializeField] protected AudioManager _audioManager;
 
         protected int _currentHealth;
 

@@ -57,14 +57,13 @@ namespace Assets.Scripts.Characters
             SetAngle(_target.position);
             if (_timerShoot <= 0)
                 {
-                    Debug.Log("Enemy");
                     Shoot();
+                    _audioManager.SFXPlay(_audioManager._audioSFXClipList[0]);
                     _timerShoot = _reloadTimeShoot;
                 }
             else
                     _timerShoot -= Time.deltaTime;
 
-            Debug.Log("Follow Player!");
         }
 
         private void StopChase()
